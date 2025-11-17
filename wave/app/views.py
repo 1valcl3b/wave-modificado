@@ -40,7 +40,7 @@ def configure(app):
 
 """
 
-        # bloco mininet
+        # bloco maininet
             conf_topology = f"""\
             
 - topology:
@@ -60,7 +60,7 @@ def configure(app):
   l: "{request.form.get('lmd-sin')}"
   microburst: "{request.form.get('microburst', 'off')}"
 """
-            conf_yaml.set_conf(conf)
+            conf_yaml.set_conf(conf + conf_topology)
             conf_yaml.set_conf_model(conf + conf_model_sin + conf_topology)
 
         elif (request.form.get('select-model') == 'flashc'):
@@ -72,7 +72,7 @@ def configure(app):
   crd: "{request.form.get('constrp-flashc')}"
   microburst: "{request.form.get('microburst', 'off')}"
 """
-            conf_yaml.set_conf(conf)
+            conf_yaml.set_conf(conf + conf_topology)
             conf_yaml.set_conf_model(conf + conf_model_flashc + conf_topology) 
         elif (request.form.get('select-model') == 'step'):
 
@@ -83,7 +83,7 @@ def configure(app):
   d: "{request.form.get('drn-step')}"
   microburst: "{request.form.get('microburst', 'off')}"
 """
-            conf_yaml.set_conf(conf)
+            conf_yaml.set_conf(conf + conf_topology)
             conf_yaml.set_conf_model(conf + conf_model_step + conf_topology)
         else:
             conf_yaml.set_conf(conf + conf_topology)
