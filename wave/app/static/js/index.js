@@ -89,3 +89,23 @@ document.getElementById("vm").addEventListener("click", function() {
     element.style.display = "block";
   });
 });
+
+// ===== Mininet link delay control =====
+const delayYes = document.getElementById("delay-yes");
+const delayNo = document.getElementById("delay-no");
+const delayField = document.getElementById("delay-field");
+
+if (delayYes && delayNo && delayField) {
+  delayYes.addEventListener("change", function () {
+    if (this.checked) {
+      delayField.classList.remove("d-none");
+    }
+  });
+
+  delayNo.addEventListener("change", function () {
+    if (this.checked) {
+      delayField.classList.add("d-none");
+    }
+  });
+}
+

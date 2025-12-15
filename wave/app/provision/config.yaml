@@ -1,19 +1,19 @@
 ---
 - traffic: server
-  ip: "192.168.56.10"
-  ram: "4"
-  vcpu: "1"
-  platform: docker
+  ip: "10.0.0.1"
+  ram: "2048"
+  vcpu: "2"
+  platform: vm
 
 - traffic: client
-  ip: "192.168.57.10"
-  ram: "4"
-  vcpu: "1"
-  platform: docker
+  ip: "10.0.0.2"
+  ram: "2048"
+  vcpu: "2"
+  platform: vm
 
             
 - topology:
     type: "tree"
     depth: "3"
-    branching: "3"
-    routers: "7"
+    branching: "2"
+    max_switches: "8"

@@ -41,14 +41,20 @@ def configure(app):
 """
 
         # bloco maininet
+            delay = request.form.get("delay")
+
             conf_topology = f"""\
             
 - topology:
     type: "{request.form.get('topology-type')}"
     depth: "{request.form.get('depth')}"
     branching: "{request.form.get('branching')}"
-    routers: "{request.form.get('routers')}"
+    max_switches: "{request.form.get('switchs')}"
 """
+            if delay and delay.isdigit() and int(delay) > 0:
+                conf_topology += f"""\
+    delay: "{delay}"
+"""        
 
         if (request.form.get('select-model') == 'sin'):
 
