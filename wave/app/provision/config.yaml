@@ -1,14 +1,14 @@
 ---
 - traffic: server
-  ip: "10.0.0.1"
+  ip: "192.168.0.10"
   ram: "2048"
-  vcpu: "2"
+  vcpu: "1"
   platform: vm
 
 - traffic: client
-  ip: "10.0.0.2"
+  ip: "192.168.11"
   ram: "2048"
-  vcpu: "2"
+  vcpu: "1"
   platform: vm
 
             
@@ -16,4 +16,5 @@
     type: "tree"
     depth: "3"
     branching: "2"
-    max_switches: "8"
+    max_switches: "10"
+    delay: "900"

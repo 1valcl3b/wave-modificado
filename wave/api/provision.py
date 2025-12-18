@@ -24,15 +24,25 @@ class Provision:
             return
             # return e.stderr.decode()
 
+
+    def run_script(self, script):
+        return self.execute_command(f"bash {script}")
+
     def up(self, platform):
         # Start the environment (Docker or Vagrant)
-        command = "vagrant up" if platform == "vm" else "docker compose up -d"
-        return self.execute_command(command)
+        if platform == "vm":
+            self.run_script("scripts/mininet_up.sh")
+            return self.run_script("scripts/vagrant_up.sh")
+        else:
+            return self.execute_command("docker compose up -d")
 
     def down(self, platform):
         # Destroy the environment (Docker or Vagrant)
-        command = "vagrant destroy -f" if platform == "vm" else "docker compose down"
-        return self.execute_command(command)
+        if platform == "vm":
+            self.run_script("scripts/vagrant_down.sh")
+            return self.run_script("scripts/mininet_down.sh")
+        else:
+            return self.execute_command("docker compose down")
 
     def execute_scenario(self, *args):
         # Execute scenarios based on user input
